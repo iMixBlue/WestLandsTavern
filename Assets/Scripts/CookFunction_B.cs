@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class CookFunction_A : MonoBehaviour
+public class CookFunction_B : MonoBehaviour
 {
     public UIManager uIManager;
     public GameObject orangeSlider; // 橙色滑块
     public GameObject greenSlider;  // 绿色滑块
     public GameObject slider;       // 扫描线
     public float _sliderSpeed = 3.0f;
+    public GameObject slider2;
+    public float _slierSpeed2 = 1.5f;
+    public GameObject backgroundSlider;
+    public float _background_sliderSpeed;
+
     public GameObject leftRange;
     public GameObject rightRange;
     public float _originalX; // 初始X坐标
@@ -31,9 +36,10 @@ public class CookFunction_A : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (slider != null)
+        if (slider != null && slider2 != null)
         {
             TranslateLeftandRight(slider, _sliderSpeed);
+            // TranslateLeftandRight(slider2, _slierSpeed2, _originalX);
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
