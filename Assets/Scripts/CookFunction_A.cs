@@ -6,127 +6,210 @@ using UnityEngine.UIElements;
 public class CookFunction_A : MonoBehaviour
 {
     public UIManager uIManager;
-    public GameObject orangeSlider; // 橙色滑块
-    public GameObject greenSlider;  // 绿色滑块
-    public GameObject slider;       // 扫描线
-    public float _sliderSpeed = 3.0f;
-    public GameObject leftRange;
-    public GameObject rightRange;
-    public float _originalX; // 初始X坐标
-    public float range = 10.0f;
-    // [SerializeField]
-    private bool moveRight1 = true; // 判断滑块移动方向
-    // [SerializeField]
-    private bool moveRight2 = true;
-    public float highScore = 150f;
-    public float lowScore = 50f;
+    public int _cookTime = 4;
+    [SerializeField]
+    private int _currentCookTime = 0;
+    private bool canAddScore = true;
+    private bool canAddFullScore = false;
+    // public GameObject[] yellowSlider;
+    // public GameObject[] yellowSliderBackup;
+    public GameObject[] whiteButton;
+    public Transform[] yellowSliderOriginal;
+    // public GameObject[] greenSlider;
+    // public GameObject[] greenSliderBackup;
+    public Transform[] greenSliderOriginal;
+    public GameObject grayCover;
+    public GameObject grayCoverBackup;
+    public Transform graySliderOriginal;
+    public GameObject scanner;       // 扫描线
+    public float _scannerSpeed = 3.0f;
+    public GameObject right_Range;
+    public float _range = 10.0f;
+    public float _fullScore = 150f;
+    public float _lowScore = 50f;
+    private float scannerX;
+    private float _greenAndYellowWidth;
+    private float _greenAndYellowMaxX;
+    private float _greenAndYellowMinX;
+    private float grayWidth;
+    private float grayMinX;
+    private float grayMaxX;
+    private bool firstTimeHoldSpace = true;
+    private bool AllowHoldSpace = true;
+    private float firstInverse = 0f;
+    public float _checkRange = 0.15f;
+    private bool stopLoopBool = false;
+    private float newWidth;
+    private float newWidthInverse;
+
+    //scanner.GetComponent<BoxCollider>().size.x
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //  _originalX = transform.position.x;
+        stopLoopBool = false;
+        grayWidth = grayCoverBackup.transform.localScale.x * grayCoverBackup.GetComponent<BoxCollider>().size.x;
+        grayMinX = grayCoverBackup.transform.position.x - (grayWidth / 2);
+        grayMaxX = grayCoverBackup.transform.position.x + (grayWidth / 2);
+        _currentCookTime = 0;
+        ResetCookState();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (slider != null)
+        newWidth = scannerX - yellowSliderOriginal[_currentCookTime].position.x;
+        newWidthInverse = Mathf.InverseLerp(0, _greenAndYellowWidth, newWidth);
+        if (!stopLoopBool)
         {
-            TranslateLeftandRight(slider, _sliderSpeed);
+            scannerX = scanner.transform.position.x;
+            ScaleGrayCover();
+            if (scanner != null)
+            {
+                TranslateRight(scanner, _scannerSpeed);
+            }
+            if (Input.GetKey(KeyCode.Space) && AllowHoldSpace)
+            {
+                CheckscannerPosition();
+            }
+
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // Debug.Log(1);
-            CheckSliderPosition();
-        }
+        // Debug.Log("ScannerX" + scannerX +  "  grayMinX:" + grayMinX + "  grayMaxX" + grayMaxX + "  _greenAndYellowMinX:" + _greenAndYellowMinX + "  greenMaxX" + _greenAndYellowMaxX);
+
+
     }
-    public void TranslateLeftandRight(GameObject obj, float speed)
+    public void TranslateRight(GameObject obj, float speed)
     {
         if (obj != null)
         {
             float translation = speed * Time.deltaTime;
-            if (moveRight1)
-            {
-                obj.transform.Translate(translation, 0, 0);
-            }
-            else
-            {
-                obj.transform.Translate(-translation, 0, 0);
-            }
+            obj.transform.Translate(translation, 0, 0);
 
             // 检查滑块是否到达范围边界
-            if (obj.transform.localPosition.x < leftRange.transform.position.x || obj.transform.localPosition.x > rightRange.transform.position.x)
+            if (obj.transform.position.x > right_Range.transform.position.x)
             {
-                moveRight1 = !moveRight1; // 改变方向
+                if (_currentCookTime < _cookTime)
+                {
+                    _currentCookTime++;
+                    ResetCookState();
+                }
+                else
+                {
+                    stopLoopBool = true;
+                }
             }
 
         }
     }
-    public void TranslateLeftandRight(GameObject obj, float speed, float originPosition)
+    void CheckscannerPosition()
     {
-        if (obj != null)
+        if (Input.GetKeyUp(KeyCode.Space))
         {
-            float translation = speed * Time.deltaTime;
-            if (moveRight2)
-            {
-                obj.transform.Translate(translation, 0, 0);
-            }
-            else
-            {
-                obj.transform.Translate(-translation, 0, 0);
-            }
+            AllowHoldSpace = false;
+        }
+        // Debug.Log("ScannerX" + scannerX +  "  grayMinX:" + grayMinX + "  grayMaxX" + grayMaxX + "  _greenAndYellowMinX:" + _greenAndYellowMinX + "  greenMaxX" + greenMaxX);
 
-            // 检查滑块是否到达范围边界
-            if (obj.transform.position.x > originPosition + range || obj.transform.position.x < originPosition - range)
+        if (scannerX > _greenAndYellowMinX && newWidthInverse > 0 && newWidthInverse < 0.5f)
+        {
+            if (firstTimeHoldSpace)
             {
-                moveRight2 = !moveRight2; // 改变方向
-            }
 
+                // Debug.Log(newWidth);
+                if (newWidth < _checkRange)
+                {
+                    firstInverse = 0f;
+                }
+                else
+                {
+                    firstInverse = Mathf.InverseLerp(0, _greenAndYellowWidth, newWidth);
+                    yellowSliderOriginal[_currentCookTime].Translate(newWidth, 0, 0);
+                    greenSliderOriginal[_currentCookTime].Translate(newWidth, 0, 0);
+                    newWidth = scannerX - yellowSliderOriginal[_currentCookTime].position.x;
+                }
+                firstTimeHoldSpace = false;
+            }
+            yellowSliderOriginal[_currentCookTime].localScale = new Vector3(Mathf.Min(newWidthInverse, 1 - firstInverse), yellowSliderOriginal[_currentCookTime].transform.localScale.y, yellowSliderOriginal[_currentCookTime].transform.localScale.z);
+            yellowSliderOriginal[_currentCookTime].GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+            greenSliderOriginal[_currentCookTime].GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        }
+        else if (scannerX < _greenAndYellowMaxX && firstInverse < 0.5f && newWidthInverse > 0.5f && newWidthInverse < 1)
+        {
+            //scannerX >= (_greenAndYellowMinX + _greenAndYellowMaxX) / 2 &&
+            float newWidth = scannerX - greenSliderOriginal[_currentCookTime].position.x;
+            float newWidthInverse = Mathf.InverseLerp(0, _greenAndYellowWidth, newWidth);
+
+            greenSliderOriginal[_currentCookTime].localScale = new Vector3(Mathf.Min(newWidthInverse, 1 - firstInverse), greenSliderOriginal[_currentCookTime].transform.localScale.y, greenSliderOriginal[_currentCookTime].transform.localScale.z);
+
+            yellowSliderOriginal[_currentCookTime].GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+            greenSliderOriginal[_currentCookTime].GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+            if (newWidthInverse > 0.75f)
+            {
+                canAddFullScore = true;
+            }
+        }
+
+
+    }
+    public void ScaleGrayCover()
+    {
+        if (scannerX >= grayMinX && scannerX <= grayMaxX)
+        {
+            float newWidth = scannerX - graySliderOriginal.transform.position.x;
+            float newWidthInverse = Mathf.InverseLerp(0, grayWidth, newWidth);
+
+            graySliderOriginal.transform.localScale = new Vector3(newWidthInverse, graySliderOriginal.transform.localScale.y, graySliderOriginal.transform.localScale.z);
+            grayCover.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
-    void CheckSliderPosition()
-{
-    // 获取扫描线的X位置
-    float scannerX = slider.transform.localPosition.x;
-
-    // 获取橙色和绿色滑块的边界
-    float orangeWidth = orangeSlider.transform.localScale.x * orangeSlider.GetComponent<BoxCollider>().size.x;
-    float greenWidth = greenSlider.transform.localScale.x * 0.7f * greenSlider.GetComponent<BoxCollider>().size.x;
-
-    float orangeMinX = orangeSlider.transform.position.x - (orangeWidth / 2);
-    float orangeMaxX = orangeSlider.transform.position.x + (orangeWidth / 2);
-    float greenMinX = greenSlider.transform.position.x - (greenWidth / 2);
-    float greenMaxX = greenSlider.transform.position.x + (greenWidth / 2);
-
-    // 调试信息
-    // Debug.Log(orangeWidth);
-    // Debug.Log(greenWidth);
-    // Debug.Log($"Scanner X: {scannerX}, Orange Min: {orangeMinX}, Orange Max: {orangeMaxX}, Green Min: {greenMinX}, Green Max: {greenMaxX}");
-
-    // 检查扫描线的位置
-    if (scannerX >= greenMinX && scannerX <= greenMaxX)
+    public void ResetCookState()
     {
-        // 扫描线位于绿色滑块内
-        AddScore_High();
+        if (canAddFullScore)
+        {
+            AddScore_Full();
+        }
+        else if (canAddScore && _currentCookTime >= 1)
+        {
+            AddScore_Low();
+        }
+        for (int i = 0; i < _cookTime; i++)
+        {
+            whiteButton[i].SetActive(false);
+        }
+        whiteButton[_currentCookTime].SetActive(true);
+        canAddScore = true;
+        canAddFullScore = false;
+        firstInverse = 0f;
+        firstTimeHoldSpace = true;
+        AllowHoldSpace = true;
+        firstTimeHoldSpace = true;
+
+        yellowSliderOriginal[_currentCookTime].GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        greenSliderOriginal[_currentCookTime].GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+
+        _greenAndYellowWidth = greenSliderOriginal[_currentCookTime].GetChild(0).transform.localScale.x * yellowSliderOriginal[_currentCookTime].GetChild(0).GetComponent<BoxCollider>().size.x;
+        _greenAndYellowMinX = greenSliderOriginal[_currentCookTime].position.x;
+        _greenAndYellowMaxX = greenSliderOriginal[_currentCookTime].position.x + _greenAndYellowWidth;
+        scanner.transform.position = new Vector3(graySliderOriginal.position.x, -4.28f, -0.4f);
+
+        graySliderOriginal.transform.localScale = new Vector3(0, graySliderOriginal.transform.localScale.y, graySliderOriginal.transform.localScale.z);
+        if (_currentCookTime >= 1)
+        {
+            yellowSliderOriginal[_currentCookTime - 1].transform.localScale = new Vector3(0, yellowSliderOriginal[_currentCookTime].transform.localScale.y, yellowSliderOriginal[_currentCookTime].transform.localScale.z);
+            greenSliderOriginal[_currentCookTime - 1].transform.localScale = new Vector3(0, greenSliderOriginal[_currentCookTime].transform.localScale.y, greenSliderOriginal[_currentCookTime].transform.localScale.z);
+        }
+
     }
-    else if (scannerX >= orangeMinX && scannerX <= orangeMaxX)
+
+    void AddScore_Full()
     {
-        // 扫描线位于橙色滑块内，但不在绿色滑块内
-        AddScore_low();
+        uIManager.addScore(_fullScore);
     }
-}
 
-void AddScore_High()
-{
-    uIManager.addScore(highScore);
-    // Debug.Log("AddScore_High executed");
-}
-
-void AddScore_low()
-{
-    uIManager.addScore(lowScore);
-    // Debug.Log("AddScore_low executed");
-}
+    void AddScore_Low()  //TODO : 改成能直接加score，删除_lowScore参数
+    {
+        uIManager.addScore(_lowScore);
+    }
 
 }
