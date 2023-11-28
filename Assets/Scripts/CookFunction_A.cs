@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class CookFunction_A : MonoBehaviour
 {
     public UIManager uIManager;
+    public GameObject Level1;
     public int _cookTime = 4;
     [SerializeField]
     private int _currentCookTime = 0;
@@ -49,6 +50,7 @@ public class CookFunction_A : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Level1.SetActive(true);
         stopLoopBool = false;
         grayWidth = grayCoverBackup.transform.localScale.x * grayCoverBackup.GetComponent<BoxCollider>().size.x;
         grayMinX = grayCoverBackup.transform.position.x - (grayWidth / 2);
@@ -75,6 +77,9 @@ public class CookFunction_A : MonoBehaviour
                 CheckscannerPosition();
             }
 
+        }
+        else{
+            Level1.SetActive(false);
         }
         // Debug.Log("ScannerX" + scannerX +  "  grayMinX:" + grayMinX + "  grayMaxX" + grayMaxX + "  _greenAndYellowMinX:" + _greenAndYellowMinX + "  greenMaxX" + _greenAndYellowMaxX);
 

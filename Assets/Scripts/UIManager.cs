@@ -6,6 +6,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public GameObject scoreText;
+    public GameObject failCountText;
     public float totalScore = 0f;
     private Color defaultColor = Color.black;
     // Start is called before the first frame update
@@ -28,5 +29,8 @@ public class UIManager : MonoBehaviour
         else if(color != null){
             this.scoreText.GetComponent<TMP_Text>().color = (Color)color;
         }
+    }
+    public void SetFailCount(int count){
+        this.failCountText.GetComponent<TMP_Text>().text = "FailCount : " + count;
     }
 }
