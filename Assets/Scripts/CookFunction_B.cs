@@ -100,7 +100,8 @@ public class CookFunction_B : MonoBehaviour
         }
         else
         {
-            Instantiate(failedRedButton, new Vector3(scanner.transform.position.x, scanner.transform.position.y, scanner.transform.position.z - 0.3f), scanner.transform.rotation);
+            GameObject obj = Instantiate(failedRedButton, new Vector3(scanner.transform.position.x, scanner.transform.position.y, scanner.transform.position.z - 0.3f), scanner.transform.rotation);
+            obj.transform.parent = Level2.transform; 
             _failTimeCount++;
             SetScore(failScore);
             uIManager.SetFailCount(_failTimeCount);
