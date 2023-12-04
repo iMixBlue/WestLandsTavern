@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class CookFunction_B : MonoBehaviour
 {
     public UIManager uIManager;
+    public LevelController levelController;
     public Camera mainCamera;
     public GameObject Level2;
     public Transform graySliderOriginal;
@@ -29,11 +31,16 @@ public class CookFunction_B : MonoBehaviour
     private float grayWidth;
     private float grayMinX;
     private float grayMaxX;
+    public float duration = 1.0f;
+    public GameObject Start321Obj;
+     private bool StartBool = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        this.StartBool = false;
+        StartCoroutine(Start321());
         Level2.SetActive(true);
         setScoreBool = false;
         scanner.transform.position = new Vector3(graySliderOriginal.position.x, -4.28f, -0.4f);
@@ -48,7 +55,8 @@ public class CookFunction_B : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!stopLoopBool)
+        if(StartBool){
+            if (!stopLoopBool)
         {
             scannerX = scanner.transform.position.x;
             ScaleGrayCover();
@@ -65,7 +73,10 @@ public class CookFunction_B : MonoBehaviour
         else
         {
             Level2.SetActive(false);
+            levelController.SetLevelActive(3);
         }
+        }
+        
     }
     public void TranslateRight(GameObject obj, float speed)
     {
@@ -122,6 +133,36 @@ public class CookFunction_B : MonoBehaviour
     {
         uIManager.addScore(score);
         // Debug.Log("AddScore_low executed");
+    }
+    IEnumerator Start321()
+    {
+        ChangeNumber(3);
+        yield return new WaitForSeconds(duration);
+
+        ChangeNumber(2);
+        yield return new WaitForSeconds(duration);
+        ChangeNumber(1);
+        yield return new WaitForSeconds(duration);
+
+        ChangeNumber(0, "Start!");
+        yield return new WaitForSeconds(duration);
+        ChangeNumber(0, "  ");
+        this.StartBool = true;
+
+        StopCoroutine(Start321());
+    }
+
+    private void ChangeNumber(int number, string start = null)
+    {
+        // Debug.Log(number);
+        if (number != 0)
+        {
+            Start321Obj.GetComponent<TMP_Text>().text = "   " + number.ToString();
+        }
+        else if (start != null)
+        {
+            Start321Obj.GetComponent<TMP_Text>().text = start;
+        }
     }
 
 }

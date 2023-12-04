@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class CookFunction_A : MonoBehaviour
 {
     public UIManager uIManager;
+    public LevelController levelController;
     public GameObject Level1;
     public int _cookTime = 4;
     [SerializeField]
@@ -42,6 +45,9 @@ public class CookFunction_A : MonoBehaviour
     private bool stopLoopBool = false;
     private float newWidth;
     private float newWidthInverse;
+    public float duration = 1.0f;
+    public GameObject Start321Obj;
+    private bool StartBool = false;
 
     //scanner.GetComponent<BoxCollider>().size.x
 
@@ -50,6 +56,8 @@ public class CookFunction_A : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.StartBool = false;
+        StartCoroutine(Start321());
         Level1.SetActive(true);
         stopLoopBool = false;
         grayWidth = grayCoverBackup.transform.localScale.x * grayCoverBackup.GetComponent<BoxCollider>().size.x;
@@ -59,10 +67,12 @@ public class CookFunction_A : MonoBehaviour
         ResetCookState();
     }
 
+
     // Update is called once per frame
     void Update()
     {
-        newWidth = scannerX - yellowSliderOriginal[_currentCookTime].position.x;
+        if(StartBool){
+            newWidth = scannerX - yellowSliderOriginal[_currentCookTime].position.x;
         newWidthInverse = Mathf.InverseLerp(0, _greenAndYellowWidth, newWidth);
         if (!stopLoopBool)
         {
@@ -78,11 +88,15 @@ public class CookFunction_A : MonoBehaviour
             }
 
         }
-        else{
+        else
+        {
             Level1.SetActive(false);
+            levelController.SetLevelActive(2);
         }
         // Debug.Log("ScannerX" + scannerX +  "  grayMinX:" + grayMinX + "  grayMaxX" + grayMaxX + "  _greenAndYellowMinX:" + _greenAndYellowMinX + "  greenMaxX" + _greenAndYellowMaxX);
 
+        }
+        
 
     }
     public void TranslateRight(GameObject obj, float speed)
@@ -216,5 +230,36 @@ public class CookFunction_A : MonoBehaviour
     {
         uIManager.addScore(_lowScore);
     }
+    IEnumerator Start321()
+    {
+        ChangeNumber(3);
+        yield return new WaitForSeconds(duration);
+
+        ChangeNumber(2);
+        yield return new WaitForSeconds(duration);
+        ChangeNumber(1);
+        yield return new WaitForSeconds(duration);
+
+        ChangeNumber(0, "Start!");
+        yield return new WaitForSeconds(duration);
+        ChangeNumber(0, "  ");
+        this.StartBool = true;
+
+        StopCoroutine(Start321());
+    }
+
+    private void ChangeNumber(int number, string start = null)
+    {
+        // Debug.Log(number);
+        if (number != 0)
+        {
+            Start321Obj.GetComponent<TMP_Text>().text = "   " + number.ToString();
+        }
+        else if (start != null)
+        {
+            Start321Obj.GetComponent<TMP_Text>().text = start;
+        }
+    }
+
 
 }

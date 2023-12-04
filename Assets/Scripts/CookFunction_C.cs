@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class CookFunction_C : MonoBehaviour
 {
     public UIManager uIManager;
+    public LevelController levelController;
     public Camera mainCamera;
     public GameObject Level3;
     public GameObject scanner;
@@ -32,10 +34,16 @@ public class CookFunction_C : MonoBehaviour
     private int _cuttentCookTime = 0;
     public float duration = 2.0f;
 
+    public float duration2 = 1.0f;
+    public GameObject Start321Obj;
+    private bool StartBool = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(Start321());
+        this.StartBool = false;
         // A_KnifePosition = new Transform[5];
         // B_KnifePosition = new Transform[5];
         scanner.transform.position = A_KnifePosition[0].position;
@@ -54,7 +62,8 @@ public class CookFunction_C : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!stopLoopBool)
+        if(StartBool){
+            if (!stopLoopBool)
         {
             scannerX = scanner.transform.position.x;
             if (scanner != null)
@@ -88,7 +97,10 @@ public class CookFunction_C : MonoBehaviour
         else
         {
             Level3.SetActive(false);
+            // levelController.SetLevelActive(4);
         }
+        }
+        
     }
 
 
@@ -139,4 +151,34 @@ public class CookFunction_C : MonoBehaviour
     Debug.Log(1);
      scanner.transform.position = A_KnifePosition[0].position;
 }
+IEnumerator Start321()
+    {
+        ChangeNumber(3);
+        yield return new WaitForSeconds(duration2);
+
+        ChangeNumber(2);
+        yield return new WaitForSeconds(duration2);
+        ChangeNumber(1);
+        yield return new WaitForSeconds(duration2);
+
+        ChangeNumber(0, "Start!");
+        yield return new WaitForSeconds(duration2);
+        ChangeNumber(0, "  ");
+        this.StartBool = true;
+
+        StopCoroutine(Start321());
+    }
+
+    private void ChangeNumber(int number, string start = null)
+    {
+        // Debug.Log(number);
+        if (number != 0)
+        {
+            Start321Obj.GetComponent<TMP_Text>().text = "   " + number.ToString();
+        }
+        else if (start != null)
+        {
+            Start321Obj.GetComponent<TMP_Text>().text = start;
+        }
+    }
 }

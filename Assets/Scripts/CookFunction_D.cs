@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class CookFunction_D : MonoBehaviour
 {
     public UIManager uIManager;
+    public LevelController levelController;
     public GameObject Level4;
     public float fullScore = 150f;
     public float failScore = -50f;
@@ -20,11 +22,16 @@ public class CookFunction_D : MonoBehaviour
     public float width = 0.1f;
     private int fallStart = 0;
     public float fallWidth = 0.05f;
+    public float duration2 = 1.0f;
+    public GameObject Start321Obj;
+    private bool StartBool = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        this.StartBool = false;
+        StartCoroutine(Start321());
         colorfulSliderOriginBackup.gameObject.SetActive(false);
         colorfulSliderOrigin.localScale = new Vector3(colorfulSliderOrigin.localScale.x, 0.0f, colorfulSliderOrigin.localScale.z);
         Level4.SetActive(true);
@@ -40,7 +47,8 @@ public class CookFunction_D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_cuttentCookTime < maxCookTime)
+        if(StartBool){
+             if (_cuttentCookTime < maxCookTime)
         {
             CheckSliderPosition();
             FallDown();
@@ -48,7 +56,11 @@ public class CookFunction_D : MonoBehaviour
         else
         {
         Level4.SetActive(false);
+        // levelController.changeLevelBool = true;
+        levelController.SetLevelActive(1);
         }
+        }
+       
     }
 
 
@@ -90,5 +102,35 @@ public class CookFunction_D : MonoBehaviour
         colorfulSliderOriginBackup.gameObject.SetActive(false);
         _cuttentCookTime++;
         setScoreBool = false;
+    }
+    IEnumerator Start321()
+    {
+        ChangeNumber(3);
+        yield return new WaitForSeconds(duration2);
+
+        ChangeNumber(2);
+        yield return new WaitForSeconds(duration2);
+        ChangeNumber(1);
+        yield return new WaitForSeconds(duration2);
+
+        ChangeNumber(0, "Start!");
+        yield return new WaitForSeconds(duration2);
+        ChangeNumber(0, "  ");
+        this.StartBool = true;
+
+        StopCoroutine(Start321());
+    }
+
+    private void ChangeNumber(int number, string start = null)
+    {
+        // Debug.Log(number);
+        if (number != 0)
+        {
+            Start321Obj.GetComponent<TMP_Text>().text = "   " + number.ToString();
+        }
+        else if (start != null)
+        {
+            Start321Obj.GetComponent<TMP_Text>().text = start;
+        }
     }
 }
