@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,10 +24,13 @@ public class CookFunction_C : MonoBehaviour
     private bool allow_A_2To3 = false;
     private bool allow_A_3To4 = false;
 
-    private bool allow_B_0To1 = false;
-    private bool allow_B_1To2 = false;
-    private bool allow_B_2To3 = false;
-    private bool allow_B_3To4 = false;
+    // private bool allow_B_0To1 = false;
+    // private bool allow_B_1To2 = false;
+    // private bool allow_B_2To3 = false;
+    // private bool allow_B_3To4 = false;
+    public int maxCookTime = 3;
+    private int _cuttentCookTime = 0;
+    public float duration = 2.0f;
 
 
     // Start is called before the first frame update
@@ -39,6 +43,12 @@ public class CookFunction_C : MonoBehaviour
         setScoreBool = false;
         stopLoopBool = false;
     }
+    public static IEnumerator WaitForSeconds(float duration, Action action)
+    {
+
+        yield return new WaitForSeconds(duration);
+        action?.Invoke();
+    }
 
 
     // Update is called once per frame
@@ -49,6 +59,7 @@ public class CookFunction_C : MonoBehaviour
             scannerX = scanner.transform.position.x;
             if (scanner != null)
             {
+                if(_cuttentCookTime < maxCookTime){
                 CheckSliderPosition();
                 float translation = _scannerSpeed * Time.deltaTime;
                 if (scanner.transform.position.x < A_KnifePosition[1].position.x && allow_A_0To1)
@@ -68,7 +79,10 @@ public class CookFunction_C : MonoBehaviour
                 if (scanner.transform.position.x < A_KnifePosition[4].position.x && allow_A_3To4)
                 {
                     scanner.transform.Translate(translation, 0, 0);
+
                 }
+                }
+                
             }
         }
         else
@@ -104,14 +118,15 @@ public class CookFunction_C : MonoBehaviour
                 SetScore(fullScore);
 
             }
-            if (allow_A_0To1 && scanner.transform.position.x < A_KnifePosition[4].position.x + checkRange && scanner.transform.position.x > A_KnifePosition[4].position.x - checkRange)
+        }
+        if (allow_A_3To4 && scanner.transform.position.x < A_KnifePosition[4].position.x + checkRange && scanner.transform.position.x > A_KnifePosition[4].position.x - checkRange)
             {
                 allow_A_3To4 = false;
-                SetScore(fullScore);
-
+                allow_A_0To1 = true;
+                // SetScore(fullScore);
+                _cuttentCookTime ++;
+                StartCoroutine(WaitForSeconds(duration, () => {ResetScanner(); }));
             }
-
-        }
 
     }
     void SetScore(float score)
@@ -119,5 +134,9 @@ public class CookFunction_C : MonoBehaviour
         uIManager.addScore(score);
         // Debug.Log("AddScore_low executed");
     }
-
+    public void ResetScanner()
+{
+    Debug.Log(1);
+     scanner.transform.position = A_KnifePosition[0].position;
+}
 }
