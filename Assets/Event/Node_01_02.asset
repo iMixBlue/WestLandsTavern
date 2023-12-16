@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30bf25ae96fec1b489b29d13517fdb58, type: 3}
   m_Name: Node_01_02
   m_EditorClassIdentifier: 
-  state: 0
+  state: 1
   DefaultSelectIndex: 0
   datas:
   - Content: "\u9009\u9879\u4E00"

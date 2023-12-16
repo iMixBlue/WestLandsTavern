@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class CookFunction_A : MonoBehaviour
 {
-    public UIManager uIManager;
+    public MyUIManager uIManager;
     public LevelController levelController;
     public GameObject Level1;
     public int _cookTime = 4;

@@ -34,7 +34,7 @@ public class EN_ShowChoice : EventNodeBase
     {
         base.Execute();
         // 显示所有的选项
-        ZeldaUIManager.CreateDialogueChocies(datas, OnChoiceConfirm, DefaultSelectIndex);
+        UIManager.CreateDialogueChocies(datas, OnChoiceConfirm, DefaultSelectIndex);
     }
     private void OnChoiceConfirm(int index)
     {

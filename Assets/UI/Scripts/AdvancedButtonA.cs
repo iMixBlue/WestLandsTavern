@@ -19,7 +19,7 @@ public class AdvancedButtonA : AdvancedButton
     {
         base.OnSelect(eventData);
         _frontRing.Fade(1, 0.1f, null);
-        ZeldaUIManager.UpdateCursorA(transform.position);
+        UIManager.UpdateCursorA(transform.position);
     }
     public override void OnDeselect(BaseEventData eventData)
     {
@@ -31,7 +31,7 @@ public class AdvancedButtonA : AdvancedButton
     {
         base.OnClickEvent();
         _animator.SetTrigger(Click);
-        ZeldaUIManager.ClickCursorA();
+        UIManager.ClickCursorA();
     }
 
     public override void Init(string content, int index, Action<int> onConfirmEvent)

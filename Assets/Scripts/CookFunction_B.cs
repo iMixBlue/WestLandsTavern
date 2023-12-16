@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class CookFunction_B : MonoBehaviour
 {
-    public UIManager uIManager;
+    public MyUIManager uIManager;
     public LevelController levelController;
     public Camera mainCamera;
     public GameObject Level2;

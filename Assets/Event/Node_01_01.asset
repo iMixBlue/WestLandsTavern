@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f658dff769a66d3448005affd8f38192, type: 3}
   m_Name: Node_01_01
   m_EditorClassIdentifier: 
-  state: 1
+  state: 2
   datas:
   - Speaker: "\u6BDB\u6BDB"
     Content: "\u65F7\u91CE\u4E4B\u606F\u7EED\u4F5C\u5BA3\u5E03<style=C1><r=TiaoPiao>\u8DF3\u7968</r></style>\uFF0C<0.8>\n\u6682\u5B9A<r=release

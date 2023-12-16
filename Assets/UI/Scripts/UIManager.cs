@@ -5,9 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
-public class ZeldaUIManager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
-    private static ZeldaUIManager _instance;
+    private static UIManager _instance;
     private void Awake()
     {
         if (_instance != null)

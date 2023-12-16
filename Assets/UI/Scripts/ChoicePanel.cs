@@ -41,7 +41,7 @@ public class ChoicePanel : Widget
     }
     public void Close(float duration = 0.2f)
     {
-        ZeldaUIManager.SetCurrentSelectable(null);
+        UIManager.SetCurrentSelectable(null);
         Fade(0f, duration, () =>
         {
             foreach (var item in _buttons)
@@ -49,7 +49,7 @@ public class ChoicePanel : Widget
                 Destroy(item.gameObject);
             }
             _buttons.Clear();
-            ZeldaUIManager.HideCursorA();
+            UIManager.HideCursorA();
         });
     }
 }

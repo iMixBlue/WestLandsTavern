@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class CookFunction_D : MonoBehaviour
 {
-    public UIManager uIManager;
+    public MyUIManager uIManager;
     public LevelController levelController;
     public GameObject Level4;
     public float fullScore = 150f;

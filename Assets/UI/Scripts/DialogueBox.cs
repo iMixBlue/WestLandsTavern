@@ -28,7 +28,6 @@ public class DialogueBox : MonoBehaviour
     private bool CanNext => _printFinished;
 
     public Action<bool> OnNext; // bool参数代表下一句话是否强制直接显示
-
     public SequenceEventExecutor executor;
 
     private void Awake()
@@ -36,7 +35,12 @@ public class DialogueBox : MonoBehaviour
         _content.OnFinished = PrintFinished;
     }
     private void Start() {
+        executor.Init(OnFinishedEvent);
         executor.Execute();
+    }
+    void OnFinishedEvent(bool success)
+    {
+        // playerCharacter.SetInputEnabled(true);
     }
     private void PrintFinished()
     {

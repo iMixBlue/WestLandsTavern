@@ -20,7 +20,7 @@ public class AdvancedButton : Button
     public override void OnSelect(BaseEventData eventData)
     {
         base.OnSelect(eventData);
-        ZeldaUIManager.SetCurrentSelectable(this);
+        UIManager.SetCurrentSelectable(this);
     }
     protected int _index;
     protected virtual void OnClickEvent() { }

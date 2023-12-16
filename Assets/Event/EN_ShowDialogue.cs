@@ -25,7 +25,7 @@ public class EN_ShowDialogue : EventNodeBase
         base.Execute();
         _index = 0;
 
-        ZeldaUIManager.OpenDialogueBox(ShowNextDialogue, boxStyle);
+        UIManager.OpenDialogueBox(ShowNextDialogue, boxStyle);
     }
 
     private void ShowNextDialogue(bool forceDiplayDirectly)
@@ -40,13 +40,13 @@ public class EN_ShowDialogue : EventNodeBase
                 AutoNext = datas[_index].AutoNext,
                 NeedTyping = !forceDiplayDirectly && datas[_index].NeedTyping
             };
-            ZeldaUIManager.PrintDialogue(data);
+            UIManager.PrintDialogue(data);
             _index++;
         }
         else
         {
             state = NodeState.Finished;
-            // OnFinished(true);
+            OnFinished(true);
         }
     }
 }

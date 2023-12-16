@@ -8,7 +8,7 @@ public class EN_CloseDialogueBox : EventNodeBase
     public override void Execute()
     {
         base.Execute();
-        ZeldaUIManager.CloseDialogueBox();
+        UIManager.CloseDialogueBox();
         state = NodeState.Finished;
         OnFinished(true);
     }
