@@ -11,9 +11,24 @@ public class MyUIManager : MonoBehaviour
     private Color defaultColor = Color.black;
     public float duration2 = 1.0f;
     public GameObject Start321Obj;
+    public GameObject menuContent;
+    public GameObject QieGaoDetail;
+    public int currentMenuLayer;
     // Start is called before the first frame update
     void Start()
     {
+    }
+    public void showQieGaoDetail(){
+        QieGaoDetail.SetActive(true);
+        menuContent.SetActive(false);
+        currentMenuLayer++;
+    }
+    public void Return(){
+        if(currentMenuLayer == 1){
+            QieGaoDetail.SetActive(false);
+            menuContent.SetActive(true);
+        }
+            currentMenuLayer--;
     }
 
     // Update is called once per frame

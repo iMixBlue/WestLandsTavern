@@ -40,7 +40,7 @@ public class Bowl : MonoBehaviour
 
     if (containsAllRequiredFood)
     {
-        sceneIndex = 0;
+        // sceneIndex = 0;
         StartCoroutine(Start321());
     }
     else

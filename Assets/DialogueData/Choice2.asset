@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f658dff769a66d3448005affd8f38192, type: 3}
   m_Name: Choice2
   m_EditorClassIdentifier: 
-  state: 2
+  state: 1
   datas:
   - Speaker: "\u6211"
-    Content: "\u4F60\u9009\u62E9\u4E86\u9009\u9879\u4E8C\uFF01"
+    Content: "\u4F60\u60F3\u5E72\u4EC0\u4E48\uFF1F\u6211\u8B66\u544A\u4F60\u4E0D\u8981\u4E71\u6765\uFF01
+      \t"
     AutoNext: 0
     NeedTyping: 1
     CanQuickShow: 1

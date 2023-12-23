@@ -57,7 +57,7 @@ public class CookFunction_D : MonoBehaviour
         {
         Level4.SetActive(false);
         // levelController.changeLevelBool = true;
-        levelController.SetLevelActive(1);
+        levelController.SetLevelActive(2);
         }
         }
        

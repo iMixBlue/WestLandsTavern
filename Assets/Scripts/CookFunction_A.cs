@@ -91,7 +91,7 @@ public class CookFunction_A : MonoBehaviour
         else
         {
             Level1.SetActive(false);
-            levelController.SetLevelActive(2);
+            levelController.SetLevelActive(3);
         }
         // Debug.Log("ScannerX" + scannerX +  "  grayMinX:" + grayMinX + "  grayMaxX" + grayMaxX + "  _greenAndYellowMinX:" + _greenAndYellowMinX + "  greenMaxX" + _greenAndYellowMaxX);
 

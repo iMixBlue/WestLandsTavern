@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     private static UIManager _instance;
+    public GameObject ChangeSceneButton;
     private void Awake()
     {
         if (_instance != null)
@@ -90,5 +92,11 @@ public class UIManager : MonoBehaviour
             _instance._choicePanel.AddButton(button);
         }
         _instance._choicePanel.Open(defaultSelectIndex);
+    }
+    public void GotoWarehouse(){
+        SceneManager.LoadScene(2);
+    }
+    public static void SetChangeSceneButton(){
+        _instance.ChangeSceneButton.SetActive(true);
     }
 }
