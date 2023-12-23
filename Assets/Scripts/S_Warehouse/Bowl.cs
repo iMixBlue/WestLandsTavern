@@ -8,7 +8,7 @@ using System.Collections;
 public class Bowl : MonoBehaviour
 {
     public int sceneIndex = 0;
-    public UIManager uIManager;
+    public MyUIManager uIManager;
     // 使用队列来存储盆中的食材
     [SerializeField]
     private Queue<GameObject> foodInBowl = new Queue<GameObject>();
