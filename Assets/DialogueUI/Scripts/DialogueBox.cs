@@ -19,7 +19,7 @@ public class DialogueBox : MonoBehaviour
     [Header("Configs")]
     [SerializeField] private Sprite[] _backgroundStyles;
 
-    private bool _interactable;
+    public bool _interactable;
     private bool _printFinished;
     private bool _canQuickShow;
     private bool _autoNext;
@@ -35,6 +35,9 @@ public class DialogueBox : MonoBehaviour
         _content.OnFinished = PrintFinished;
     }
     private void Start() {
+        // Debug.Log(1);
+        // gameObject.SetActive(true);
+        // _content.OnFinished = PrintFinished;
         executor.Init(OnFinishedEvent);
         executor.Execute();
     }
@@ -65,7 +68,8 @@ public class DialogueBox : MonoBehaviour
 
     private void UpdateInput()
     {
-        if (Input.GetButtonDown("Cancel"))
+
+        if (Input.GetButtonDown("Cancel") || Input.GetMouseButtonDown(1))
         {
             if (CanQuickShow)
             {
@@ -80,7 +84,7 @@ public class DialogueBox : MonoBehaviour
                 OnNext(true);
             }
         }
-        else if (Input.GetButtonDown("Submit"))
+        else if (Input.GetButtonDown("Submit") ||Input.GetMouseButtonDown(0))
         {
             if (CanNext)
             {

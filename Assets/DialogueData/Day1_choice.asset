@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30bf25ae96fec1b489b29d13517fdb58, type: 3}
   m_Name: Day1_choice
   m_EditorClassIdentifier: 
-  state: 1
+  state: 0
   DefaultSelectIndex: 0
   datas:
-  - Content: "\u4E00\u53EA\u8001\u9F20\uFF1F\u6211\u4E00\u5B9A\u662F\u7761\u7CCA\u6D82\u4E86"
+  - Content: A mouse? I must be half asleep
     bQuickLocate: 0
-  - Content: "\u4F38\u624B\u53BB\u62FF\u7B24\u5E1A"
+  - Content: Reach out for the broom
     bQuickLocate: 0
   executors:
   - {fileID: 11400000, guid: 2d78ed0b83307bd4d8b1366fffe95bfa, type: 2}

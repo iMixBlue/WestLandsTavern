@@ -14,38 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   datas:
-  - Speaker: "\u8001\u9F20"
-    Content: "\u6211\u8981\u4E16\u754C\u4E0A\u6700\u7F8E\u5473\u7684\u98DF\u7269\uFF0C\u4E0D\u8981\u4F01\u56FE\u7CCA\u5F04\u6211\uFF0C\u6211\u53EF\u662F\u5403\u8FC7\u5927\u5E08\u505A\u7684\u83DC\u54E6\uFF01"
+  - Speaker: Mouse
+    Content: '"I want the most delicious food in the world. Don''t try to deceive
+      me. I''ve eaten dishes made by masters!"'
     AutoNext: 0
     NeedTyping: 1
     CanQuickShow: 1
-  - Speaker: "\u4F60"
-    Content: "\u55EF\u2026\u2026\u96BE\u9053\u662F\u71D5\u7A9D\u9E21\u4E1D\u6C64\uFF1F\u6D77\u53C2\u7096\u718A\u638C\uFF1F\u8FD8\u662F\u83B2\u82B1\u84B8\u9E2D\u5FC3\uFF1F"
+  - Speaker: You
+    Content: '"Hmm... Is it the swallow''s nest with shredded chicken? Braised sea
+      cucumber with bear''s paw? Or lotus steamed duck hearts?"'
     AutoNext: 0
     NeedTyping: 1
     CanQuickShow: 1
-  - Speaker: "\u8001\u9F20"
-    Content: "\u90A3\u90FD\u662F\u4F60\u4EEC\u4EBA\u7C7B\u559C\u6B22\u5403\u7684\u4E1C\u897F\uFF0C\u8F6F\u8F6F\u7684\uFF0C\u5BF9\u8001\u9F20\u6765\u8BF4\u4E0D\u597D\u5403\u3002"
+  - Speaker: Mouse
+    Content: '"Those are all things that humans enjoy eating, soft and not tasty
+      for a mouse."'
     AutoNext: 0
     NeedTyping: 1
     CanQuickShow: 1
-  - Speaker: "\u4F60"
-    Content: "\u662F\u54E6\uFF0C\u4EBA\u7684\u7259\u9F7F\u968F\u7740\u5E74\u9F84\u8D8A\u6765\u8D8A\u5C11\uFF0C\u4F46\u8001\u9F20\u7684\u7259\u9F7F\u968F\u7740\u5E74\u9F84\u4F1A\u8D8A\u6765\u8D8A\u957F\uFF0C\u90A3\u4EC0\u4E48\u6837\u7684\u4E1C\u897F\u624D\u662F\u4F60\u65CF\u7684\u73CD\u9990\u5462\uFF1F"
+  - Speaker: You
+    Content: '"Right, humans lose teeth as they age, but a mouse''s teeth grow longer.
+      So, what kind of food is a delicacy for your kind?"'
     AutoNext: 0
     NeedTyping: 1
     CanQuickShow: 1
-  - Speaker: "\u65C1\u767D"
-    Content: "\u8001\u9F20\u60F3\u4E86\u60F3\uFF0C\u52A8\u4F5C\u795E\u6001\u6781\u5EA6\u50CF\u4EBA\u3002"
+  - Speaker: Narration
+    Content: The mouse thought for a moment, acting remarkably human.
     AutoNext: 0
     NeedTyping: 1
     CanQuickShow: 1
-  - Speaker: "\u8001\u9F20"
-    Content: "\u5F53\u7136\u662F\u53C8\u786C\u53C8\u9999\u7684\u575A\u679C\uFF0C\u548C\u751C\u4E1D\u4E1D\u7684\u871C\u996F\u4E86\u3002"
+  - Speaker: Mouse
+    Content: '"Of course, it''s hard and fragrant nuts, along with sweet honey."'
     AutoNext: 0
     NeedTyping: 1
     CanQuickShow: 1
-  - Speaker: "\u4F60"
-    Content: "\u575A\u679C\uFF0C\u871C\u996F\uFF0C\u53C8\u786C\u53C8\u751C\uFF0C\u5514\uFF0C\u90A3\u5E94\u8BE5\u662F\u5207\u7CD5\u4E86\u3002"
+  - Speaker: You
+    Content: '"Nuts, honey, hard and sweet... Hmm, that should be sesame seed cake."'
     AutoNext: 0
     NeedTyping: 1
     CanQuickShow: 1

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30bf25ae96fec1b489b29d13517fdb58, type: 3}
   m_Name: Day1_choice2
   m_EditorClassIdentifier: 
-  state: 1
+  state: 0
   DefaultSelectIndex: 0
   datas:
-  - Content: What do you want?
+  - Content: What would you like to order?
     bQuickLocate: 0
   executors:
   - {fileID: 11400000, guid: 316b6b0f364904c409e5417534e0b626, type: 2}

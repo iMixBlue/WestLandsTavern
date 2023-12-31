@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    // [SerializeField]
     private static UIManager _instance;
     public GameObject ChangeSceneButton;
     private void Awake()
@@ -19,8 +20,9 @@ public class UIManager : MonoBehaviour
         }
         _instance = this;
         _instance._pfbButtonA = Resources.Load<GameObject>("UI/Button/ButtonA");
-        HideCursorA();
         DontDestroyOnLoad(gameObject);
+        HideCursorA();
+        
     }
 
     private Selectable _currentSelectable;

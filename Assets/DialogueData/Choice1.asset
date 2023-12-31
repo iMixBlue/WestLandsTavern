@@ -12,45 +12,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f658dff769a66d3448005affd8f38192, type: 3}
   m_Name: Choice1
   m_EditorClassIdentifier: 
-  state: 1
+  state: 0
   datas:
-  - Speaker: "\u8001\u9F20"
-    Content: "\u6211\u53EF\u4E0D\u662F\u666E\u901A\u7684\u8001\u9F20\uFF0C\u6211\u662F\u4F4F\u5728\u8FD9\u91CC\u7684\u7CBE\u7075\u3002"
+  - Speaker: Mouse
+    Content: '"I''m not just an ordinary mouse, I''m an elf living here."'
     AutoNext: 0
     NeedTyping: 1
     CanQuickShow: 1
-  - Speaker: "\u4F60"
-    Content: "\u90A3\u4E0D\u8FD8\u662F\u8001\u9F20\u3002"
+  - Speaker: You
+    Content: '"But you''re still a mouse."'
     AutoNext: 0
     NeedTyping: 1
     CanQuickShow: 1
-  - Speaker: "\u8001\u9F20"
-    Content: "\u6211\u4E0D\u4EC5\u662F\u4E2A\u8001\u9F20\uFF0C\u8FD8\u662F\u4F60\u7684\u987E\u5BA2\u3002"
+  - Speaker: Mouse
+    Content: ' "Not only am I a mouse, but I''m also your customer."'
     AutoNext: 0
     NeedTyping: 1
     CanQuickShow: 1
-  - Speaker: "\u4F60"
-    Content: "\u6240\u4EE5\u4F60\u73B0\u5728\u8981\u70B9\u83DC\u4E86\u5BF9\u5427\uFF1F"
+  - Speaker: You
+    Content: '"So, are you here to place an order now?"'
     AutoNext: 0
     NeedTyping: 1
     CanQuickShow: 1
-  - Speaker: "\u8001\u9F20"
-    Content: "\u4F60\u597D\u50CF\u4E00\u70B9\u90FD\u4E0D\u60CA\u8BB6\u3002"
+  - Speaker: Mouse
+    Content: '"You don''t seem surprised at all."'
     AutoNext: 0
     NeedTyping: 1
     CanQuickShow: 1
-  - Speaker: "\u4F60"
-    Content: "\u5982\u679C\u4F60\u5728\u4E00\u5929\u5185\u8FDE\u7EED\u9047\u5230\u5973\u9B3C\u548C\u51F6\u6740\u6848\uFF0C\u665A\u4E0A\u89C1\u5230\u4E00\u53EA\u4F1A\u8BF4\u8BDD\u7684\u8001\u9F20\u6709\u4EC0\u4E48\u7A00\u5947\u7684\u3002\r\n"
+  - Speaker: You
+    Content: '"If you''ve encountered a female ghost and a murder case in a single
+      day, meeting a talking mouse at night isn''t that peculiar."'
     AutoNext: 0
     NeedTyping: 1
     CanQuickShow: 1
-  - Speaker: "\u8001\u9F20"
-    Content: "\u6211\u8FD8\u4EE5\u4E3A\u4F60\u4F1A\u60F3\u90A3\u4E2A\u5973\u6355\u5FEB\u4E00\u6837\u88AB\u5413\u5F97\u8DF3\u8D77\u6765\u3002"
+  - Speaker: Mouse
+    Content: '"I thought you''d be as startled as that female constable."'
     AutoNext: 0
     NeedTyping: 1
     CanQuickShow: 1
-  - Speaker: "\u4F60"
-    Content: "\u5973\u6355\u5FEB\u88AB\u5413\u7684\u8DF3\u8D77\u6765\u4E0D\u662F\u56E0\u4E3A\u4F60\u4F1A\u8BF4\u8BDD\u2026\u2026"
+  - Speaker: You
+    Content: '"The constable jumped not because you can talk..."'
     AutoNext: 0
     NeedTyping: 1
     CanQuickShow: 1
