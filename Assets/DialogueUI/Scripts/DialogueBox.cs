@@ -38,8 +38,8 @@ public class DialogueBox : MonoBehaviour
         // Debug.Log(1);
         // gameObject.SetActive(true);
         // _content.OnFinished = PrintFinished;
-        executor.Init(OnFinishedEvent);
-        executor.Execute();
+        // executor.Init(OnFinishedEvent);
+        // executor.Execute();
     }
     void OnFinishedEvent(bool success)
     {

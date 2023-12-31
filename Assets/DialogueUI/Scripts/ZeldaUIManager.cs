@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
         }
         _instance = this;
         _instance._pfbButtonA = Resources.Load<GameObject>("UI/Button/ButtonA");
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject);
         HideCursorA();
         
     }

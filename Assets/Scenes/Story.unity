@@ -5745,6 +5745,7 @@ GameObject:
   - component: {fileID: 1390017757}
   - component: {fileID: 1390017756}
   - component: {fileID: 1390017759}
+  - component: {fileID: 1390017760}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -5886,6 +5887,19 @@ MonoBehaviour:
   buttonReturnLv1Obj: {fileID: 1627761063}
   buttonReturnLv2Obj: {fileID: 571422394}
   detailBGObj: {fileID: 519717165}
+--- !u!114 &1390017760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390017755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd28f5b61323bfa4a8aff1a4fd350136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  executor: {fileID: 11400000, guid: 6282c9515488bc44dafad61054481dc0, type: 2}
 --- !u!1 &1407219761
 GameObject:
   m_ObjectHideFlags: 0
