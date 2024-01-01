@@ -28,7 +28,7 @@ public class DialogueBox : MonoBehaviour
     private bool CanNext => _printFinished;
 
     public Action<bool> OnNext; // bool参数代表下一句话是否强制直接显示
-    public SequenceEventExecutor executor;
+    // public SequenceEventExecutor executor;
 
     private void Awake()
     {

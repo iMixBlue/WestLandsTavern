@@ -2384,6 +2384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DoorObj: {fileID: 1277415008}
+  doorActiveBool: 0
   MenuObj: {fileID: 1832742967}
   dragonObj: {fileID: 632033331}
   dragonActiveBool: 0
@@ -2518,14 +2519,14 @@ RectTransform:
   m_GameObject: {fileID: 579168030}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2069605201}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 502.33337, y: 424.0669}
+  m_AnchoredPosition: {x: 66.96, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &632033331
@@ -9522,6 +9523,7 @@ RectTransform:
   m_Children:
   - {fileID: 492096153}
   - {fileID: 887065180}
+  - {fileID: 579168033}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -9674,6 +9676,5 @@ SceneRoots:
   - {fileID: 1386278015}
   - {fileID: 1989483404}
   - {fileID: 2069605201}
-  - {fileID: 579168033}
   - {fileID: 680611554}
   - {fileID: 1642085835}

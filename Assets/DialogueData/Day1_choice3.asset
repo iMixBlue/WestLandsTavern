@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30bf25ae96fec1b489b29d13517fdb58, type: 3}
   m_Name: Day1_choice3
   m_EditorClassIdentifier: 
-  state: 1
+  state: 0
+  returnNodes: 1
   DefaultSelectIndex: 0
   datas:
   - Content: About taste

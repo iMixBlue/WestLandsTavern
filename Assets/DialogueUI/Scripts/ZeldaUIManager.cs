@@ -9,8 +9,9 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     // [SerializeField]
-    private static UIManager _instance;
+    public static UIManager _instance;
     public GameObject ChangeSceneButton;
+    public static Test test;
     private void Awake()
     {
         if (_instance != null)
@@ -98,6 +99,7 @@ public class UIManager : MonoBehaviour
     public void GotoWarehouse(){
         SceneManager.LoadScene(2);
     }
+
     public static void SetChangeSceneButton(){
         _instance.ChangeSceneButton.SetActive(true);
     }

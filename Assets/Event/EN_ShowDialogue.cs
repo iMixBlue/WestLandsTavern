@@ -11,6 +11,7 @@ public class DialogueData
     public bool AutoNext;
     public bool NeedTyping;
     public bool CanQuickShow;
+
 }
 
 [CreateAssetMenu(fileName = "Node_",menuName ="Event/Message/Show Dialogue")]

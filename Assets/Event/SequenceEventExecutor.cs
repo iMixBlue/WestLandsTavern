@@ -44,6 +44,7 @@ public class SequenceEventExecutor : ScriptableObject
         {
             if (nodes[_index].state == NodeState.Waiting)
             {
+                
                 _index++; // _index = 4
                 nodes[_index - 1].Execute(); //关闭对话框节点
             }

@@ -25,11 +25,19 @@ public class CookFunction_D : MonoBehaviour
     public float duration2 = 1.0f;
     public GameObject Start321Obj;
     private bool StartBool = false;
+    public GameObject pressUI1;
+    public GameObject pressUI2;
+    public GameObject pressUI3;
+    public GameObject pressUI4;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        pressUI1.SetActive(true);
+        pressUI3.SetActive(false);
+        pressUI2.SetActive(false);
+        pressUI4.SetActive(false);
         this.StartBool = false;
         StartCoroutine(Start321());
         colorfulSliderOriginBackup.gameObject.SetActive(false);

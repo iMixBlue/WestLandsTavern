@@ -2,21 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Rendering.Universal;
 
 [Serializable]
 public class ChoiceData
 {
     public string Content;
     public bool bQuickLocate;
+
     // 音效？
 }
 
-[CreateAssetMenu(fileName ="Node_",menuName ="Event/Message/Show Choices")]
+[CreateAssetMenu(fileName = "Node_", menuName = "Event/Message/Show Choices")]
 public class EN_ShowChoice : EventNodeBase
 {
+
+    public int returnNodes;
     public int DefaultSelectIndex = 0;
     public ChoiceData[] datas;
     public SequenceEventExecutor[] executors;
+
 
 
     public override void Init(Action<bool> onFinishedEvent)
@@ -38,13 +43,14 @@ public class EN_ShowChoice : EventNodeBase
     }
     private void OnChoiceConfirm(int index)
     {
-        if (index < executors.Length && null != executors[index])
-        {
-            executors[index].Execute();
+            if (index < executors.Length && null != executors[index])
+            {
+                
+                executors[index].Execute();
+            }
+            else
+            {
+                OnFinished(true);
+            }
         }
-        else
-        {
-            OnFinished(true);
-        }
-    }
 }

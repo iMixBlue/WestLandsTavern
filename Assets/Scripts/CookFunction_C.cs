@@ -37,11 +37,21 @@ public class CookFunction_C : MonoBehaviour
     public float duration2 = 1.0f;
     public GameObject Start321Obj;
     private bool StartBool = false;
+    public GameObject finishCG1;
+    public GameObject pressUI1;
+    public GameObject pressUI2;
+    public GameObject pressUI3;
+    public GameObject pressUI4;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        pressUI4.SetActive(true);
+        pressUI1.SetActive(false);
+        pressUI2.SetActive(false);
+        pressUI3.SetActive(false);
+
         StartCoroutine(Start321());
         this.StartBool = false;
         // A_KnifePosition = new Transform[5];
@@ -91,11 +101,16 @@ public class CookFunction_C : MonoBehaviour
 
                 }
                 }
+                else if(_cuttentCookTime >= maxCookTime){
+                    stopLoopBool = true;
+                }
                 
             }
         }
         else
         {
+            pressUI4.SetActive(false);
+            finishCG1.SetActive(true);
             Level3.SetActive(false);
             // levelController.SetLevelActive(4);
         }

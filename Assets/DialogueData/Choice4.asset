@@ -12,10 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f658dff769a66d3448005affd8f38192, type: 3}
   m_Name: Choice4
   m_EditorClassIdentifier: 
-  state: 1
+  state: 0
   datas:
-  - Speaker: "\u8001\u9F20"
-    Content: "\u52C9\u5F3A\u53CA\u683C\u5427\uFF01\u8FD8\u6709\u5F88\u5927\u7684\u8FDB\u6B65\u7A7A\u95F4\u3002\r\n\u8001\u9F20\u5634\u4E0A\u8BF4\u7740\uFF0C\u4F46\u5634\u5374\u4E0D\u505C\uFF0C\u53D1\u51FA\u556E\u9F7F\u7C7B\u751F\u7269\u7279\u6709\u7684\u5543\u98DF\u58F0\u3002"
+  - Speaker: Mouse
+    Content: barely passable! There is still a lot of room for improvement.
+    AutoNext: 0
+    NeedTyping: 1
+    CanQuickShow: 1
+  - Speaker: Narration
+    Content: 'The rat says this, but his mouth doesn''t stop, '
+    AutoNext: 0
+    NeedTyping: 1
+    CanQuickShow: 1
+  - Speaker: Narration
+    Content: making the characteristic gnawing sound of rodent creatures.
     AutoNext: 0
     NeedTyping: 1
     CanQuickShow: 1

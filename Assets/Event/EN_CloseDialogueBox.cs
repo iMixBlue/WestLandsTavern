@@ -8,9 +8,10 @@ public class EN_CloseDialogueBox : EventNodeBase
     public override void Execute()
     {
         base.Execute();
-        UIManager.SetChangeSceneButton();
+        // UIManager.SetChangeSceneButton();
         UIManager.CloseDialogueBox();
         state = NodeState.Finished;
+
         OnFinished(true);
     }
 }
