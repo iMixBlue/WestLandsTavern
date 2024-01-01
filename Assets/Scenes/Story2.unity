@@ -4788,6 +4788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChangeSceneButton: {fileID: 439216811}
+  DialogueManager: {fileID: 0}
   _dialogueBox: {fileID: 899123444}
   _cursorA: {fileID: 1384046765}
   _choicePanel: {fileID: 1197751485}
@@ -5891,7 +5892,6 @@ MonoBehaviour:
   newExecutor: {fileID: 11400000, guid: 470217a689ce93e4e94bc961dcc88ac5, type: 2}
   canReturn: 0
   once: 1
-  a: 500
 --- !u!1 &1407219761
 GameObject:
   m_ObjectHideFlags: 0

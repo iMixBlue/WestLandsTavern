@@ -9,6 +9,7 @@ public class ChoiceData
 {
     public string Content;
     public bool bQuickLocate;
+    public bool allowReturn;
 
     // 音效？
 }
@@ -45,7 +46,7 @@ public class EN_ShowChoice : EventNodeBase
     {
             if (index < executors.Length && null != executors[index])
             {
-                
+                // Debug.Log(31342);
                 executors[index].Execute();
             }
             else

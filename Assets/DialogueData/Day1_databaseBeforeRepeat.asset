@@ -15,14 +15,9 @@ MonoBehaviour:
   state: 1
   datas:
   - Speaker: Mouse
-    Content: 43geargagr
-    AutoNext: 0
-    NeedTyping: 1
-    CanQuickShow: 1
-  - Speaker: Mouse
     Content: what a nostalgic flavour ...... appreciable skill, but still a far cry
       from the master.
-    AutoNext: 0
+    AutoNext: 1
     NeedTyping: 1
     CanQuickShow: 1
   boxStyle: 0

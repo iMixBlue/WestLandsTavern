@@ -11,7 +11,8 @@ public class UIManager : MonoBehaviour
     // [SerializeField]
     public static UIManager _instance;
     public GameObject ChangeSceneButton;
-    public static Test test;
+    public  void SetTestReturn(){
+    }
     private void Awake()
     {
         if (_instance != null)
@@ -89,6 +90,9 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < datas.Length; i++)
         {
+            if(datas[i].allowReturn){
+                DialogueManager._instance.GetComponent<DialogueManager>().allowReturn = true;
+            }
             AdvancedButtonA button = Instantiate(_instance._pfbButtonA).GetComponent<AdvancedButtonA>();
             button.gameObject.name = "ButtonA" + i;
             button.Init(datas[i].Content, i, onConfirmEvent);
