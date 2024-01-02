@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     // [SerializeField]
     public static UIManager _instance;
     public GameObject ChangeSceneButton;
+    public GameObject FinalCGThanks;
     public  void SetTestReturn(){
     }
     private void Awake()
@@ -106,5 +107,8 @@ public class UIManager : MonoBehaviour
 
     public static void SetChangeSceneButton(){
         _instance.ChangeSceneButton.SetActive(true);
+    }
+    public static void DisplayFinalCG(){
+        _instance.FinalCGThanks.SetActive(true);
     }
 }
